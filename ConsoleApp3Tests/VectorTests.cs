@@ -23,10 +23,7 @@ namespace ConsoleApp3.Tests
         [SetUp]
         public void Setup()
         {
-            _a = new List<double>();
-            _a.Add(1);
-            _a.Add(3);
-            _a.Add(5);
+            _a = new List<double> {1, 3, 5};
 
             _bTemp = new double[] {2, 4, 6};
             _b = new List<double>(_bTemp);
@@ -80,6 +77,14 @@ namespace ConsoleApp3.Tests
         }
 
         [Test()]
+        public void three_vectors_toString_test()
+        {
+            var actual = _vf.ToString();
+            var expected = "(3,3)";
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test()]
         public void two_dimension_test()
         {
             var actual = _vf.Dimension;
@@ -88,18 +93,10 @@ namespace ConsoleApp3.Tests
         }
 
         [Test()]
-        public void vectors_expression_test_v1()
+        public void two_vectors_toString_test()
         {
             var actual = _va.ToString();
             var expected = "(1,3,5)";
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test()]
-        public void vectors_expression_test_v2()
-        {
-            var actual = _vb.ToString();
-            var expected = "(2,4,6)";
             Assert.AreEqual(expected, actual);
         }
     }

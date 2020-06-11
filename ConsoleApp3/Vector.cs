@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ConsoleApp3
 {
     public class Vector
     {
         public int Dimension;
+        public List<double> Vectors;
 
         //property
         //public int dimension;
@@ -13,54 +16,84 @@ namespace ConsoleApp3
         public double Z;
 
         //method
-        public Vector(List<double> a)
+        public Vector(List<double> vectors)
         {
+            Vectors = vectors;
+            Dimension = vectors.Count;
         }
 
-        public Vector(double x, double y, double z)
+
+        public Vector add(Vector outter)
         {
-            X = x;
-            Y = y;
-            Z = z;
+            if (outter.Vectors.Count != Vectors.Count)
+            {
+                throw new Exception();
+            }
+
+            var tempVector = new List<double>();
+            var outterEnumerator = outter.Vectors.GetEnumerator();
+            var sourceEnumerator = Vectors.GetEnumerator();
+            while (outterEnumerator.MoveNext() && sourceEnumerator.MoveNext())
+            {
+                var outterVector = outterEnumerator.Current;
+                var sourceVector = sourceEnumerator.Current;
+                tempVector.Add(outterVector + sourceVector);
+            }
+
+            return new Vector(tempVector);
         }
 
-        public string Tostring()
+
+        public Vector subtract(Vector outter)
         {
-            var x = "(" + X + "," + Y + "," + Z + ")";
-            return x;
+            if (outter.Vectors.Count != Vectors.Count)
+            {
+                throw new Exception();
+            }
+
+            var tempVector = new List<double>();
+            var outterEnumerator = outter.Vectors.GetEnumerator();
+            var sourceEnumerator = Vectors.GetEnumerator();
+            while (outterEnumerator.MoveNext() && sourceEnumerator.MoveNext())
+            {
+                var outterVector = outterEnumerator.Current;
+                var sourceVector = sourceEnumerator.Current;
+                tempVector.Add(sourceVector - outterVector);
+            }
+
+            return new Vector(tempVector);
         }
 
-        public Vector add(Vector v)
+        public Vector scalarMultiplication(double scalar)
         {
-            var result = new Vector(0,0,0);
-            result.X = X + v.X;
-            result.Y = Y + v.Y;
-            result.Z = Z + v.Z;
-            return result;
-        }
+            var tempVector = new List<double>();
+            var vectorsEnumerator = Vectors.GetEnumerator();
+            while (vectorsEnumerator.MoveNext())
+            {
+                var vector = vectorsEnumerator.Current;
+                tempVector.Add(vector * scalar);
+            }
 
-        public Vector substract(Vector v)
-        {
-            var result = new Vector(0,0,0);
-            result.X = X - v.X;
-            result.Y = Y - v.Y;
-            result.Z = Z - v.Z;
-            return result;
-        }
-
-        public Vector subtract(Vector va)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Vector scalarMultiplication(double d)
-        {
-            throw new System.NotImplementedException();
+            return new Vector(tempVector);
         }
 
         public object dotProduct(Vector vb)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            var vectorExpression = new StringBuilder();
+            var vectorsEnumerator = Vectors.GetEnumerator();
+            while (vectorsEnumerator.MoveNext())
+            {
+                var vector = vectorsEnumerator.Current;
+                vectorExpression.Append(vector);
+                vectorExpression.Append(",");
+            }
+
+            return vectorExpression.ToString();
         }
     }
 }

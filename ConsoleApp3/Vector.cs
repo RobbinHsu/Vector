@@ -9,19 +9,12 @@ namespace ConsoleApp3
         public int Dimension;
         public List<double> Vectors;
 
-        //property
-        //public int dimension;
-        public double X;
-        public double Y;
-        public double Z;
-
         //method
         public Vector(List<double> vectors)
         {
             Vectors = vectors;
             Dimension = vectors.Count;
         }
-
 
         public Vector add(Vector outter)
         {
@@ -42,7 +35,6 @@ namespace ConsoleApp3
 
             return new Vector(tempVector);
         }
-
 
         public Vector subtract(Vector outter)
         {

@@ -16,6 +16,9 @@ namespace ConsoleApp3.Tests
         private double[] _bTemp;
         private Vector _va;
         private Vector _vb;
+        private double[] _cTemp;
+        private List<double> _c;
+        private Vector _vf;
 
         [SetUp]
         public void Setup()
@@ -30,6 +33,10 @@ namespace ConsoleApp3.Tests
 
             _va = new Vector(_a);
             _vb = new Vector(_b);
+
+            _cTemp = new double[] { 3, 3 };
+            _c = new List<double>(_cTemp);
+            _vf = new Vector(_c);
         }
 
         [Test()]

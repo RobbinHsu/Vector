@@ -77,9 +77,19 @@ namespace ConsoleApp3
             return new Vector(tempVector);
         }
 
-        public object dotProduct(Vector vb)
+        public double dotProduct(Vector outter)
         {
-            throw new NotImplementedException();
+            var outterEnumerator = outter.Vectors.GetEnumerator();
+            var sourceEnumerator = Vectors.GetEnumerator();
+            var sumVector = 0D;
+            while (outterEnumerator.MoveNext() && sourceEnumerator.MoveNext())
+            {
+                var outterVector = outterEnumerator.Current;
+                var sourceVector = sourceEnumerator.Current;
+                sumVector += (outterVector * sourceVector);
+            }
+
+            return sumVector;
         }
 
         public override string ToString()

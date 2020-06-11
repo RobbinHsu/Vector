@@ -14,10 +14,10 @@ namespace ConsoleApp3.Tests
         private List<double> _a;
         private List<double> _b;
         private double[] _bTemp;
+        private List<double> _c;
+        private double[] _cTemp;
         private Vector _va;
         private Vector _vb;
-        private double[] _cTemp;
-        private List<double> _c;
         private Vector _vf;
 
         [SetUp]
@@ -34,7 +34,7 @@ namespace ConsoleApp3.Tests
             _va = new Vector(_a);
             _vb = new Vector(_b);
 
-            _cTemp = new double[] { 3, 3 };
+            _cTemp = new double[] {3, 3};
             _c = new List<double>(_cTemp);
             _vf = new Vector(_c);
         }
@@ -48,18 +48,10 @@ namespace ConsoleApp3.Tests
         }
 
         [Test()]
-        public void dimension_test_v1()
+        public void dotProduct_test()
         {
-            var actual = _va.Dimension;
-            var expected = 3;
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test()]
-        public void dimension_test_v2()
-        {
-            var actual = _vb.Dimension;
-            var expected = 3;
+            var actual = _va.dotProduct(_vb);
+            var expected = 44;
             Assert.AreEqual(expected, actual);
         }
 
@@ -76,6 +68,22 @@ namespace ConsoleApp3.Tests
         {
             var actual = _vb.subtract(_va).ToString();
             var expected = "(1,1,1)";
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test()]
+        public void three_dimension_test()
+        {
+            var actual = _va.Dimension;
+            var expected = 3;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test()]
+        public void two_dimension_test()
+        {
+            var actual = _vf.Dimension;
+            var expected = 2;
             Assert.AreEqual(expected, actual);
         }
 

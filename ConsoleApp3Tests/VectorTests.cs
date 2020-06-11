@@ -36,7 +36,7 @@ namespace ConsoleApp3.Tests
         public void add_test_v1()
         {
             var actual = _va.add(_vb).ToString();
-            var expected = "3,7,11,";
+            var expected = "(3,7,11)";
             Assert.AreEqual(expected, actual);
         }
 
@@ -60,7 +60,7 @@ namespace ConsoleApp3.Tests
         public void scalarMultiplication_test_v1()
         {
             var actual = _vb.scalarMultiplication(3.00).ToString();
-            var expected = "6,12,18,";
+            var expected = "(6,12,18)";
             Assert.AreEqual(expected, actual);
         }
 
@@ -68,7 +68,7 @@ namespace ConsoleApp3.Tests
         public void subtract_test_v1()
         {
             var actual = _vb.subtract(_va).ToString();
-            var expected = "1,1,1,";
+            var expected = "(1,1,1)";
             Assert.AreEqual(expected, actual);
         }
 
@@ -76,7 +76,7 @@ namespace ConsoleApp3.Tests
         public void vectors_expression_test_v1()
         {
             var actual = _va.ToString();
-            var expected = "1,3,5,";
+            var expected = "(1,3,5)";
             Assert.AreEqual(expected, actual);
         }
 
@@ -84,7 +84,7 @@ namespace ConsoleApp3.Tests
         public void vectors_expression_test_v2()
         {
             var actual = _vb.ToString();
-            var expected = "2,4,6,";
+            var expected = "(2,4,6)";
             Assert.AreEqual(expected, actual);
         }
     }

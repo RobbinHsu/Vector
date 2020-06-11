@@ -85,12 +85,23 @@ namespace ConsoleApp3
         public override string ToString()
         {
             var vectorExpression = new StringBuilder();
+            vectorExpression.Append("(");
+
             var vectorsEnumerator = Vectors.GetEnumerator();
-            while (vectorsEnumerator.MoveNext())
+            var moveNext = vectorsEnumerator.MoveNext();
+            while (moveNext)
             {
                 var vector = vectorsEnumerator.Current;
                 vectorExpression.Append(vector);
-                vectorExpression.Append(",");
+
+                if (moveNext = vectorsEnumerator.MoveNext())
+                {
+                    vectorExpression.Append(",");
+                }
+                else
+                {
+                    vectorExpression.Append(")");
+                }
             }
 
             return vectorExpression.ToString();

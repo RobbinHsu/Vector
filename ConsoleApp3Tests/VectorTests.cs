@@ -79,17 +79,7 @@ namespace ConsoleApp3.Tests
         [Test()]
         public void three_vector_add_two_vector_failed_test()
         {
-            var expectedException = new Exception();
-            try
-            {
-                var actual = _va.add(_vf).ToString();
-            }
-            catch (Exception ex)
-            {
-                expectedException = ex;
-            }
-
-            Assert.IsNotNull(expectedException);
+            Assert.Throws<Exception>(() => _va.add(_vf));
         }
 
         [Test()]

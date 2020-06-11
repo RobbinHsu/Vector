@@ -48,10 +48,9 @@ namespace ConsoleApp3
             {
                 var Vg = Va.add(Vf);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Console.WriteLine("The dimensions of the two vectors do not match");
-                throw;
             }
 
             Console.ReadKey();

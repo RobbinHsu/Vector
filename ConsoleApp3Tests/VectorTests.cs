@@ -37,14 +37,6 @@ namespace ConsoleApp3.Tests
         }
 
         [Test()]
-        public void add_test_v1()
-        {
-            var actual = _va.add(_vb).ToString();
-            var expected = "(3,7,11)";
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test()]
         public void dotProduct_test()
         {
             var actual = _va.dotProduct(_vb);
@@ -74,6 +66,30 @@ namespace ConsoleApp3.Tests
             var actual = _va.Dimension;
             var expected = 3;
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test()]
+        public void three_vector_add_success_test()
+        {
+            var actual = _va.add(_vb).ToString();
+            var expected = "(3,7,11)";
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test()]
+        public void three_vector_add_two_vector_failed_test()
+        {
+            var expectedException = new Exception();
+            try
+            {
+                var actual = _va.add(_vf).ToString();
+            }
+            catch (Exception ex)
+            {
+                expectedException = ex;
+            }
+
+            Assert.IsNotNull(expectedException);
         }
 
         [Test()]
